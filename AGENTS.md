@@ -29,6 +29,22 @@ The full bar lives in `skills/threejs-game-director/SKILL.md`. In short:
 - Generic stat-card HUDs, cube obstacles, and skyline boxes are prototype placeholders unless the user asked for that style.
 - Mobile input and resize belong in the first implementation path, not a final afterthought.
 
+## Beauty gate (web titles with anhy-imagine)
+
+When `product-designs/<slug>/assets/anhy-imagine/` exists:
+
+1. NOTES + spark/suite visuals are the beauty contract, not mood boards.
+2. Before claiming a playable slice, load director + gameplay + aaa-graphics + game-ui.
+   Load 3d-generator / image-generator for every hero surface in the first viewport
+   (player/server, 2+ guests, station/trays, HUD chips + bottom nav icons).
+3. Procedural primitives are allowed only as temporary stand-ins while asset jobs run.
+   They fail the slice gate if still on screen at "done".
+4. Done requires side-by-side evidence:
+   - portrait capture vs `spark/gameplay-play.png` (or suite in-context)
+   - written `artifacts/side-by-side.md` with no open "placeholder" lines for hero surfaces
+5. User phrases like "smallest loop first" or "not AAA scorecard" do not waive this gate
+   when anhy-imagine masters already exist for the title.
+
 ## Evidence
 
 For complete games, capture active-play screenshots for the target viewports plus canvas-pixel evidence with the scaffold's `npm run inspect:canvas` and `npm run verify:visual`, or `skills/threejs-qa-release/scripts/inspect-threejs-canvas.mjs`. Animated work also needs motion evidence. Small edits receive targeted verification; do not repeat unchanged suites without a new concern.
