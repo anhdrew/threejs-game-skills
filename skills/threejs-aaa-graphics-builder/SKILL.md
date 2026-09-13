@@ -1,6 +1,6 @@
 ---
 name: threejs-aaa-graphics-builder
-description: "Upgrade Three.js games from prototype visuals to premium browser graphics: art-direction critique, procedural model building, material and texture libraries, world prop kits, shaders, VFX, lighting and render pipeline, LOD and instancing, render budgets, and a 10-category visual scorecard. Use when screenshots still look basic or the user asks for premium, AAA, high-fidelity, showcase, or less-basic graphics."
+description: "Upgrade Three.js games from prototype visuals to premium browser graphics: art-direction critique, procedural model building, material and texture libraries, world prop kits, shaders, VFX, lighting and render pipeline, LOD and instancing, render budgets, and a 10-category visual scorecard. Use when screenshots still look basic or the user asks for premium, AAA, high-fidelity, showcase, or less-basic graphics. Also use when anhy-game-pipeline layout needs authored procedural model factories."
 ---
 
 # Three.js AAA Graphics Builder
@@ -21,6 +21,8 @@ For a broad "still looks basic" or premium pass, read all four before implementi
 ## Core rule
 
 Glow does not make primitives look AAA. Build authored forms first, then materials, then lighting, then effects — in that order.
+
+When the caller is `anhy-game-pipeline` **layout**, that skill owns *when* and the roster brief: procedural-only factories, no credential probe, layout compare vs object sheets (not the 10-category scorecard). Recipes in this pack still own *how* to author forms.
 
 ## Workflow
 

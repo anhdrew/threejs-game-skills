@@ -35,10 +35,8 @@ When `product-designs/<slug>/assets/anhy-imagine/` exists:
 
 1. NOTES + spark/suite visuals are the beauty contract, not mood boards.
 2. Before claiming a playable slice, load director + gameplay + aaa-graphics + game-ui.
-   Load 3d-generator / image-generator for every hero surface in the first viewport
-   (player/server, 2+ guests, station/trays, HUD chips + bottom nav icons).
-3. Procedural primitives are allowed only as temporary stand-ins while asset jobs run.
-   They fail the slice gate if still on screen at "done".
+   Pipeline titles (`anhy-game-pipeline`): hero 3D follows `model_source` (default: authored procedural factories from `threejs-aaa-graphics-builder`). Do not require `threejs-3d-generator` unless `model_source` is `image-to-3d`. HUD 2D from suite/ui (image-generator if a slot is missing).
+3. A lone cube/capsule/plane is greybox and fails "done". Authored procedural factories matching object sheets are the default mesh, not a temporary stand-in. Invisible collision proxies only.
 4. Done requires side-by-side evidence:
    - portrait capture vs `spark/gameplay-play.png` (or suite in-context)
    - written `artifacts/side-by-side.md` with no open "placeholder" lines for hero surfaces
