@@ -62,7 +62,7 @@ LOD earns its place when an object spans large distance ranges, when the silhoue
 
 ## Imported and generated asset cleanup
 
-For every imported GLB/FBX hero asset: confirm scale, pivot, forward/up orientation, bounds, and active-play silhouette; build a collision proxy independent of the visual mesh; inspect file size, triangles, mesh/material/texture counts, and animation clips; simplify excessive materials and textures; add an LOD or simplified variant when reused many times; check PBR readability under the game's own lighting rather than a model viewer.
+For every imported GLB/FBX hero asset: confirm scale, pivot, forward/up orientation, bounds, and active-play silhouette; build a collision proxy independent of the visual mesh; inspect file size, triangles, mesh/material/texture counts, and animation clips; simplify excessive materials and textures; add an LOD or simplified variant when reused many times; check PBR readability under the game's own lighting rather than a model viewer. If the file has clips (or companion animation FBX), keep them and play them through `threejs-gameplay-systems/references/fbx-animation.md`. Clearing `animations` is not cleanup.
 
 API keys and temporary download URLs stay out of client code and out of checked-in files.
 

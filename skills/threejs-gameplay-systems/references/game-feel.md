@@ -305,7 +305,7 @@ Map each event to a full feedback stack. Stronger events get more layers and hig
 - Constant camera shake, or shake with no decay: nauseating and it hides the play field.
 - Trauma added without the `trauma²` curve or the hard cap: small events feel violent, stacked events fling the camera.
 - Hitstop on every minor event: the game feels laggy instead of weighty. Reserve it for heavy contact.
-- Feedback that blocks or delays input: never gate the primary verb behind an animation finishing.
+- Feedback that blocks or delays input: never gate the primary verb behind an animation finishing. Skeletal clips follow `fbx-animation.md`; juice may sync to `playOnce`, the verb may not wait for it.
 - Effects driven by wall clock or fixed-timestep gameplay delta: they desync from the simulation and break during hitstop or on frame drops. Drive time-based effects from accumulated game time; drive feedback tweens/camera from the real render delta.
 - Emissive flash on a material with a black `emissive` color: nothing shows.
 - `Math.random` in any gameplay or effect path: it breaks the deterministic test hooks and screenshot baselines.

@@ -11,7 +11,7 @@ Follow the changed behavior's scope. Reuse the lead's existing reproduction and 
 
 ## Reference
 
-`references/debug-playbook.md` — ordered triage for blank canvas, asset and audio loading, loop/animation/physics, input and mobile, the profiling sequence, and the `__THREE_GAME_DIAGNOSTICS__` shape. Read it when debugging or profiling anything non-obvious.
+`references/debug-playbook.md` — ordered triage for blank canvas, asset and audio loading, loop/animation/physics, input and mobile, the profiling sequence, and the `__THREE_GAME_DIAGNOSTICS__` shape. Read it when debugging or profiling anything non-obvious. Frozen or collapsing FBX/GLB rigs: also read sibling `threejs-gameplay-systems/references/fbx-animation.md`.
 
 ## Debug
 

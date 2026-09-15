@@ -65,7 +65,7 @@ python3 <this-skill-dir>/scripts/threejs_audio_asset.py voice-change \
 
 ## Recovery and Coordination
 
-For coordinated games use the director's `references/asset-recovery.md`. Preserve outputs and the audio trigger mapping before retrying work. Distinguish missing credentials, permissions, exhausted credits, invalid input, and transient service failures. Reconcile an uncertain paid request before resubmitting; these one-shot commands do not implement Tripo task resume. Keep independent gameplay work moving and provide a local/synthesized fallback with honest limitations when genuinely blocked.
+For coordinated games use the director's `references/asset-recovery.md`. Preserve outputs and the audio trigger mapping before retrying work. Distinguish missing credentials, permissions, exhausted credits, invalid input, and transient service failures. Reconcile an uncertain paid request before resubmitting; these one-shot commands do not implement Meshy task resume. Keep independent gameplay work moving and provide a local/synthesized fallback with honest limitations when genuinely blocked.
 
 Listen to a representative effect or line before generating a batch. Test it through its real game event, then give the lead paths and local playback findings for one consolidated QA pass.
 

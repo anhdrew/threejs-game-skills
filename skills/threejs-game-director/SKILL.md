@@ -30,11 +30,12 @@ Use the actual loaded skill directory as `<director-skill-dir>`. Resolve sibling
 | Phase | Skill |
 | --- | --- |
 | Design brief, core loop, levels, entities, input, camera, physics, feel | `threejs-gameplay-systems` |
+| Play imported FBX/GLB clips (Mixamo, store-kit, Meshy FBX/GLB) | `threejs-gameplay-systems` (`references/fbx-animation.md`) |
 | Models, materials, shaders, VFX, lighting, render budget, scorecard | `threejs-aaa-graphics-builder` |
 | HUD, menus, overlays, responsive and touch UI | `threejs-game-ui-designer` |
 | Blank canvas, render/runtime bugs, mobile input, profiling | `threejs-debug-profiler` |
 | Browser QA, screenshots, canvas pixels, bot playtest, production build | `threejs-qa-release` |
-| Characters, vehicles, weapons, buildings, rigs, animation | `threejs-3d-generator` |
+| Generate, rig, and retarget characters / vehicles / weapons / buildings | `threejs-3d-generator` |
 | Concepts, textures, skies, logos, icons, GUI art, image-to-3D inputs | `threejs-image-generator` |
 | SFX, ambience, UI sounds, announcer and dialogue | `threejs-audio-generator` |
 
@@ -68,7 +69,7 @@ Read `references/asset-recovery.md` when sourcing external assets or recovering 
 
 ## Verification ownership
 
-The lead consolidates specialist results into one check set appropriate to the change. Full games need production build, real-input progression and retry, target-viewport captures, renderer diagnostics, and the premium scorecard when requested. Small edits need affected behavior/layout checks. Repeat checks only after relevant changes, failures, or unresolved concerns. For animated work include motion captures covering locomotion, transitions, and contact timing, not only stills.
+The lead consolidates specialist results into one check set appropriate to the change. Full games need production build, real-input progression and retry, target-viewport captures, renderer diagnostics, and the premium scorecard when requested. Small edits need affected behavior/layout checks. Repeat checks only after relevant changes, failures, or unresolved concerns. For animated work include motion captures covering locomotion, transitions, and contact timing, not only stills. An imported FBX/GLB that still shows bind pose while clips exist on disk is a fail — load `threejs-gameplay-systems/references/fbx-animation.md`.
 
 ## Getting started and checking output
 

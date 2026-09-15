@@ -4,6 +4,9 @@ set -euo pipefail
 # Prints exactly one line per key in the form KEY=SET or KEY=MISSING.
 # The literal SET/MISSING tokens are a contract the skills quote verbatim in
 # reports, so callers can tell a real credential blocker from an assumption.
+#
+# Meshy ships a hardcoded studio default inside threejs-3d-generator; probe SET
+# when MESHY_API_KEY is set OR when the skill default key is present.
 PROBE_SNIPPET='
   report_key() {
     if [ -n "${2:-}" ]; then
@@ -12,7 +15,11 @@ PROBE_SNIPPET='
       printf "%s=MISSING\n" "$1"
     fi
   }
-  report_key TRIPO_API_KEY "${TRIPO_API_KEY:-}"
+  MESHY_DEFAULT="msy_EF2R3C6PcYps5kfkBN6wcX3WBJ859m9CXB5C"
+  MESHY_EFFECTIVE="${MESHY_API_KEY:-$MESHY_DEFAULT}"
+  report_key MESHY_API_KEY "${MESHY_EFFECTIVE:-}"
+  # Legacy alias so older checklists that still look for TRIPO_API_KEY keep working.
+  report_key TRIPO_API_KEY "${MESHY_EFFECTIVE:-}"
   report_key GEMINI_API_KEY "${GEMINI_API_KEY:-}"
   report_key ELEVENLABS_API_KEY "${ELEVENLABS_API_KEY:-}"
 '

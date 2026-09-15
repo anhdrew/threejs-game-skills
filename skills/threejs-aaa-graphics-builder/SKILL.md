@@ -14,6 +14,7 @@ Own the production graphics pass: turn basic screenshots into authored, high-den
 | `references/visual-scorecard.md` | scoring visuals or making any premium/AAA/showcase claim |
 | `references/authoring-recipes.md` | building hero, obstacle, reward, world-kit, or prop models; changing lighting, tone mapping, shadows, fog, post, or graphics architecture |
 | `references/technical-art.md` | render budgets, material kits, VFX systems, instancing/LOD, imported asset cleanup, anything that could affect browser performance |
+| sibling `threejs-gameplay-systems/references/fbx-animation.md` | imported skinned FBX/GLB that must play clips (loader wrapper + mixer; do not strip `animations`) |
 | `references/shader-cookbook.md` | custom shaders, `onBeforeCompile`, skies, or post-processing; use recipes as tested starting points and verify them against the project's Three.js version |
 
 For a broad "still looks basic" or premium pass, read all four before implementing. A narrow graphics edit loads only its relevant references and checks; the requested style and scope override recipe defaults.

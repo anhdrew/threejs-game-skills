@@ -29,6 +29,8 @@ class PackagingTests(unittest.TestCase):
             "threejs-game-director/references/asset-recovery.md",
             "threejs-game-director/references/evidence-manifest.md",
             "threejs-game-director/references/workflow-evaluations.md",
+            "threejs-gameplay-systems/references/fbx-animation.md",
+            "threejs-gameplay-systems/assets/fbx-animation/FbxActor.ts",
         ):
             with self.subTest(path=relative):
                 self.assertTrue((SKILLS / relative).is_file())

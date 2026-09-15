@@ -7,12 +7,13 @@ The same nine skills serve Codex and Claude Code. The user's requested scope, ar
 ## Coordination
 
 - The lead owns scope, shared interfaces, integration, and one consolidated verification pass. Delegate independent work when it improves quality or saves time, normally to at most two workers with separate file ownership and explicit outputs. One focused independent review is useful for substantial gameplay, graphics, or animation changes. Continue directly when delegation tools are unavailable.
-- Complete games load the five production specialists and relevant generators; narrow changes load only affected skills and references. Read each phase's relevant references before doing that work.
+- Complete games load the five production specialists and relevant generators; narrow changes load only affected skills and references. Read each phase's relevant references before doing that work. Playing Mixamo, store-kit, or Meshy FBX/GLB clips is gameplay (`references/fbx-animation.md`), not a reason to skip the mixer or strip takes.
 - For substantial builds, keep `artifacts/game-progress.md` current with intent, constraints, completed work, pending task IDs/checkpoints, defects, and next actions. Apply user corrections to pending work and preserve completed assets.
 
 ## Default Technical Stack
 
 - TypeScript, Vite, npm package imports, Three.js modules; `three/addons/...` for official controls, loaders, and post-processing helpers.
+- Skinned FBX/GLB clips: `FBXLoader` / `GLTFLoader`, `SkeletonUtils.clone`, one `AnimationMixer` per instance. Read `skills/threejs-gameplay-systems/references/fbx-animation.md`. Never empty `animations` to simplify a character.
 - Physics: custom collision for arcade triggers, Rapier as the default robust engine, `cannon-es` as a lightweight JS fallback. See `skills/threejs-gameplay-systems/references/physics-engine-selection.md` when physics is in scope.
 - `lil-gui` for local tuning; a lightweight HUD or `stats.js` for frame diagnostics when performance matters.
 - WebGPU is conditional: `WebGPURenderer` only when the project benefits, with a WebGL/WebGL2 fallback.

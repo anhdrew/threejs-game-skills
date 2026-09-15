@@ -1,6 +1,6 @@
 ---
 name: threejs-gameplay-systems
-description: "Build and iterate playable Three.js game systems: starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice."
+description: "Build and iterate playable Three.js game systems: starter scaffold, architecture, design briefs, core loops, level and encounter design, entities, input, camera, collision and physics, scoring, objectives, and game feel. Use for first playable slices, new Vite/TypeScript/Three.js setups, level/arena/track/wave/hole/puzzle design, combat encounters, difficulty tuning, and juice. Also use for FBX/GLB skinned animation: FBXLoader, Mixamo clip libraries, store-kit characters, AnimationMixer, clip crossfade, and root-motion cleanup."
 ---
 
 # Three.js Gameplay Systems
@@ -14,6 +14,7 @@ Resolve `<this-skill-dir>` and local references from the actual loaded skill fil
 | File | Read it when |
 | --- | --- |
 | `references/game-feel.md` | tuning feel, juice, impact, hitstop, screenshake, or claiming polished gameplay |
+| `references/fbx-animation.md` | importing or playing skinned FBX/GLB clips, Mixamo libraries, store-kit characters, AnimationMixer, or a body stuck in T-pose |
 | `references/genre-design.md` | designing levels, arenas, tracks, waves, holes, puzzles, encounters, or difficulty curves |
 | `references/physics-engine-selection.md` | adding or changing physics, collision-heavy gameplay, vehicles, rolling balls, character controllers, sensors, moving platforms |
 
@@ -44,6 +45,7 @@ For broad game creation or a substantial design change, write three short artifa
 3. Implement in playable increments — input, state, entity, collision, feedback, HUD and audio hooks, diagnostics — so something is playable at every step.
    Establish one representative encounter at the intended camera scale with the actual hero and feedback before expanding content. Enemy, reward, and prop variety should serve the genre's decisions, not a universal asset quota.
 4. Tune feel: movement, acceleration, camera follow and FOV, hitstop, impact feedback, cooldowns, difficulty, restart.
+   When a skinned FBX/GLB is in the slice, read `references/fbx-animation.md` and copy `assets/fbx-animation/FbxActor.ts` into the game. Play the clips. Do not empty `animations` to simplify a mesh.
 5. Keep hot paths allocation-light and update order explicit.
 6. Route all gameplay randomness through the scaffold's seeded RNG so the deterministic test hooks keep working.
 
@@ -53,12 +55,12 @@ Gameplay code emits audio events; `threejs-audio-generator` produces the actual 
 
 ## Stack
 
-TypeScript, Vite, Three.js modules, `three/addons/...` for official controls, loaders, and post-processing. `lil-gui` for live-tuned constants. Web Audio for runtime playback. Physics engine choice, timestep, and collider strategy follow `references/physics-engine-selection.md` — Rapier by default when the game needs real simulation.
+TypeScript, Vite, Three.js modules, `three/addons/...` for official controls, loaders, and post-processing. `lil-gui` for live-tuned constants. Web Audio for runtime playback. Physics engine choice, timestep, and collider strategy follow `references/physics-engine-selection.md` — Rapier by default when the game needs real simulation. Skinned FBX/GLB clips use `FBXLoader` / `GLTFLoader`, `SkeletonUtils.clone`, and `AnimationMixer` per `references/fbx-animation.md`.
 
 ## What goes wrong
 
-A static demo instead of a playable loop · mechanics bolted onto a scene that was built first · a core loop described but never proven through real input, pressure, reward, and fail/retry · a track or arena that decorates rather than shapes decisions · a mechanic that compiles but no input can trigger · camera and controls that lag or hide the next decision · state changes that never reach UI, audio, or VFX · abstractions built before any mechanic needed them.
+A static demo instead of a playable loop · mechanics bolted onto a scene that was built first · a core loop described but never proven through real input, pressure, reward, and fail/retry · a track or arena that decorates rather than shapes decisions · a mechanic that compiles but no input can trigger · camera and controls that lag or hide the next decision · state changes that never reach UI, audio, or VFX · abstractions built before any mechanic needed them · a skinned FBX that stays in T-pose because clips were stripped, never mixed, or cloned with `Object3D.clone`.
 
 ## Report
 
-Behavior and controls, the three design artifacts for broad builds, architecture choices and tuned values, changed files, and what you saw when you played it. Note the physics engine, timestep, and collider strategy when physics is in scope.
+Behavior and controls, the three design artifacts for broad builds, architecture choices and tuned values, changed files, and what you saw when you played it. Note the physics engine, timestep, and collider strategy when physics is in scope. When FBX/GLB clips are in play, list clip names, the mixer state, and the motion you observed — a T-pose still is not done.

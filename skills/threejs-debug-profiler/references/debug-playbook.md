@@ -20,13 +20,15 @@ URLs and Vite base path · files in `public/` or imported paths · loader type a
 
 For generated/imported GLB: file size, URL casing, Draco/Meshopt requirements, scene scale, pivot and origin, bounds, texture dimensions, material count, animation clip names — and whether the generated download URLs were saved before they expired.
 
+For imported FBX: `FBXLoader` + `fflate` (CDN import maps), texture basename aliases, `template.animations` not emptied, `SkeletonUtils.clone` for each instance, one mixer per instance rooted on that clone, clip track paths rebound to the instance graph, `mixer.update` in seconds. A T-pose with a non-empty file on disk is a playback bug — see `threejs-gameplay-systems/references/fbx-animation.md`.
+
 ## Audio
 
 Files exist at their runtime URLs with compatible MIME types · `AudioContext` resumed from a user gesture before playback · decode and load promises reject visibly rather than silently · SFX triggers are event-driven, not per-frame · ambience and music loops stop on pause, restart, and teardown · mute and volume reach every group · visibility pause/resume does not stack duplicate sources · mobile unlock tested when mobile is in scope.
 
 ## Loop, animation, physics
 
-Delta units (seconds vs milliseconds) · delta clamping for tab sleep and frame spikes · fixed-step accumulator when timing matters · physics initialized before bodies are created or the world is stepped · one owner for body creation and disposal · timestep not tied to variable render delta · mixer updates and clip actions · only one `requestAnimationFrame` loop · state transitions that stop updates or restart timers · collision proxies vs visual meshes · collider scale, rotation, offset · high-speed tunneling and spawn overlap · CCD only where needed · sensors have active events or explicit overlap checks · kinematic platforms move the body, not just the mesh · restart cleans up entities, listeners, timers, effects, and bodies · imported model clips bound to the correct root with intentional root motion.
+Delta units (seconds vs milliseconds) · delta clamping for tab sleep and frame spikes · fixed-step accumulator when timing matters · physics initialized before bodies are created or the world is stepped · one owner for body creation and disposal · timestep not tied to variable render delta · mixer updates and clip actions · only one `requestAnimationFrame` loop · state transitions that stop updates or restart timers · collision proxies vs visual meshes · collider scale, rotation, offset · high-speed tunneling and spawn overlap · CCD only where needed · sensors have active events or explicit overlap checks · kinematic platforms move the body, not just the mesh · restart cleans up entities, listeners, timers, effects, and bodies · imported model clips bound to the correct root with intentional root motion · FBX duplicate takes (keep the shallower `|` path) · root-position lock only on Hips/Root · no shared mixer across stamped bodies.
 
 ## Input and mobile
 
@@ -58,7 +60,7 @@ window.__THREE_GAME_DIAGNOSTICS__ = {
 };
 ```
 
-Useful fields: `renderer.info.render.calls`, `.triangles`, `.points`, `.lines`, `.memory.geometries`, `.memory.textures`.
+Useful fields: `renderer.info.render.calls`, `.triangles`, `.points`, `.lines`, `.memory.geometries`, `.memory.textures`. Skinned FBX/GLB games add `animation: { clips, current, time }` from the actor `debugState()`.
 
 Physics-heavy games add:
 

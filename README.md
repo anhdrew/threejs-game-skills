@@ -87,7 +87,7 @@ Never commit API keys or put them in browser-side game code. These skills use pr
 
 | Provider | Skill | Environment variable | Use cases | Key setup |
 | --- | --- | --- | --- | --- |
-| Tripo API | `threejs-3d-generator` | `TRIPO_API_KEY` | Text/image/multiview to 3D, game-ready GLB/FBX hero models, vehicles, props, buildings, weapons, textures, rigging, animation, stylization, mesh conversion, post-processing. | [Tripo quick start](https://platform.tripo3d.ai/docs/quick-start) and [Tripo API overview](https://www.tripo3d.ai/api). |
+| Meshy.ai API | `threejs-3d-generator` | `MESHY_API_KEY` (optional; skill ships a studio default) | Text/image to 3D, game-ready GLB/FBX hero models, vehicles, props, buildings, weapons, retexture, remesh, convert, rigging, animation library clips. | [Meshy API docs](https://docs.meshy.ai) and [quick start](https://docs.meshy.ai/api/quick-start). |
 | Gemini image API | `threejs-image-generator` | `GEMINI_API_KEY` | Concept art, image-to-3D source images, texture references, decals, skies, backgrounds, icons, logos, GUI art, title/menu art. | [Gemini API key docs](https://ai.google.dev/gemini-api/docs/api-key) and [Google AI Studio keys](https://aistudio.google.com/app/apikey). |
 | ElevenLabs API | `threejs-audio-generator` | `ELEVENLABS_API_KEY` | SFX, ambience loops, UI sounds, announcer lines, dialogue TTS, voice conversion, audio cleanup, game audio manifests. | [ElevenLabs quickstart](https://elevenlabs.io/docs/eleven-api/quickstart) and [API authentication](https://elevenlabs.io/docs/api-reference/authentication). |
 
@@ -96,7 +96,7 @@ Set keys in your shell profile, then restart your terminal.
 macOS/Linux with `zsh` or `bash`:
 
 ```bash
-export TRIPO_API_KEY="..."
+export MESHY_API_KEY="..."   # optional; threejs-3d-generator embeds a studio default
 export GEMINI_API_KEY="..."
 export ELEVENLABS_API_KEY="..."
 ```
@@ -106,7 +106,7 @@ For `zsh`, put those lines in `~/.zshrc` or `~/.zprofile`. For `bash`, put them 
 Windows PowerShell, current terminal session only:
 
 ```powershell
-$env:TRIPO_API_KEY = "..."
+$env:MESHY_API_KEY = "..."   # optional
 $env:GEMINI_API_KEY = "..."
 $env:ELEVENLABS_API_KEY = "..."
 ```
@@ -114,7 +114,7 @@ $env:ELEVENLABS_API_KEY = "..."
 Windows PowerShell, persistent for your user account:
 
 ```powershell
-[Environment]::SetEnvironmentVariable("TRIPO_API_KEY", "...", "User")
+[Environment]::SetEnvironmentVariable("MESHY_API_KEY", "...", "User")
 [Environment]::SetEnvironmentVariable("GEMINI_API_KEY", "...", "User")
 [Environment]::SetEnvironmentVariable("ELEVENLABS_API_KEY", "...", "User")
 ```
@@ -130,12 +130,12 @@ bash ~/.claude/skills/threejs-game-director/scripts/probe_asset_credentials.sh
 bash ~/.agents/skills/threejs-game-director/scripts/probe_asset_credentials.sh
 ```
 
-It prints `TRIPO_API_KEY=SET|MISSING` (and the same for Gemini and ElevenLabs) without ever printing key values.
+It prints `MESHY_API_KEY=SET|MISSING` (and the same for Gemini and ElevenLabs; a legacy `TRIPO_API_KEY` line mirrors Meshy) without ever printing key values.
 
 Provider notes:
 
-- Tripo is optional but useful for high-value 3D surfaces that procedural code alone rarely makes premium: hero vehicles, bosses, weapons, buildings, creatures, props, and textured GLB/FBX assets.
-- Gemini image generation is optional but useful before Tripo image-to-3D and for high-quality texture, sky, icon, logo, decal, and GUI sources.
+- Meshy is optional but useful for high-value 3D surfaces that procedural code alone rarely makes premium: hero vehicles, bosses, weapons, buildings, creatures, props, and textured GLB/FBX assets. The 3D generator skill embeds a studio default key.
+- Gemini image generation is optional but useful before Meshy image-to-3D and for high-quality texture, sky, icon, logo, decal, and GUI sources.
 - ElevenLabs is optional but useful for making games feel finished through interaction SFX, ambience, UI feedback, voice, and cleanup.
 - Google also supports `GOOGLE_API_KEY`, but these skills standardize on `GEMINI_API_KEY` for clarity.
 - Use provider-side key restrictions and quotas where available. ElevenLabs documents endpoint scopes, credit quotas, and secret-key handling; Google recommends environment variables and is migrating Gemini users toward auth keys.
@@ -143,12 +143,12 @@ Provider notes:
 ## Best Entry Points
 
 - Use `threejs-game-director` for complete games, major upgrades, premium polish, release-ready work, or anything broad.
-- Use `threejs-gameplay-systems` for mechanics, architecture, input, camera, physics, scoring, objectives, and game feel.
+- Use `threejs-gameplay-systems` for mechanics, architecture, input, camera, physics, scoring, objectives, game feel, and FBX/GLB clip playback (Mixamo, store-kit, Meshy FBX/GLB).
 - Use `threejs-aaa-graphics-builder` when screenshots look basic or the game needs stronger models, materials, lighting, VFX, world detail, or render polish.
 - Use `threejs-game-ui-designer` for HUDs, menus, overlays, responsive layout, safe areas, icons, touch controls, and text fit.
 - Use `threejs-debug-profiler` for black screens, runtime errors, loading issues, resize/mobile bugs, performance, draw calls, triangles, textures, and memory.
 - Use `threejs-qa-release` for production builds, browser verification, screenshots, canvas pixels, mobile checks, release risk reports, and static-hosting readiness.
-- Use `threejs-3d-generator` for Tripo API text/image-to-3D models, texture, rigging, animation, conversion, and GLB/FBX game assets.
+- Use `threejs-3d-generator` for Meshy.ai text/image-to-3D models, retexture, remesh, convert, rigging, animation, and GLB/FBX game assets.
 - Use `threejs-image-generator` for Gemini-generated concepts, image-to-3D inputs, textures, decals, skies, backgrounds, icons, logos, GUI art, and title/menu art.
 - Use `threejs-audio-generator` for ElevenLabs SFX, ambience, UI sounds, voice/TTS, voice conversion, cleanup, and Three.js audio integration.
 
@@ -217,12 +217,12 @@ Premium/AAA claims should not rely on a static scene, placeholder cubes, generic
 ## Skill System
 
 - `threejs-game-director`: main entrypoint for complete game builds: scope and quality bar, specialist routing, bounded delegation, continuity notes, asset recovery, current-run evidence.
-- `threejs-gameplay-systems`: playable loop, architecture, game design and level design, mechanics, entities, controls, camera, physics selection, and game feel (hitstop, screenshake, easing, impact feedback).
+- `threejs-gameplay-systems`: playable loop, architecture, game design and level design, mechanics, entities, controls, camera, physics selection, game feel (hitstop, screenshake, easing, impact feedback), and skinned FBX/GLB animation (`references/fbx-animation.md`).
 - `threejs-aaa-graphics-builder`: visual scorecard with calibration anchors, technical art budgets, shader/material cookbook, asset architecture, models, materials, VFX, render polish.
 - `threejs-game-ui-designer`: HUDs, menus, overlays, responsive UI, icons, safe areas, UI states.
 - `threejs-debug-profiler`: scene/runtime/render bugs, mobile bugs, performance profiling, renderer metrics.
 - `threejs-qa-release`: browser QA, screenshots, canvas pixels with measured metrics, visual test harness, bot playtests, responsive checks, production build, release risk report.
-- `threejs-3d-generator`: Tripo API text/image-to-3D, texture, auto-rig, animation, conversion, download, checkpoint/resume, staged inspection, and Three.js import guidance.
+- `threejs-3d-generator`: Meshy.ai text/image-to-3D, retexture, remesh, convert, auto-rig, animation, download, checkpoint/resume, staged inspection, and Three.js import guidance.
 - `threejs-image-generator`: Gemini image generation for concepts, textures, decals, skies, icons, GUI art, and image-to-3D inputs.
 - `threejs-audio-generator`: ElevenLabs-backed SFX, ambience, UI sounds, voice/TTS, voice conversion, cleanup, and Three.js audio integration.
 
@@ -232,6 +232,7 @@ Installed skills are self-contained. They do not depend on root docs, root scaff
 
 - `skills/`: the full public package. Each skill owns its required `SKILL.md`, `references/`, `scripts/`, and `assets/`.
 - `skills/threejs-gameplay-systems/assets/threejs-vite-game/`: packaged game scaffold used by the skills when starting from an empty project. Ships deterministic test hooks (`__THREE_GAME_TEST_HOOKS__`), a seeded RNG, and `tests/` templates for smoke tests, visual-regression baselines, and bot playtests.
+- `skills/threejs-gameplay-systems/assets/fbx-animation/FbxActor.ts`: copy-ready Mixamo/store/Meshy FBX clip player. Not in the default scaffold; copy it into a game when skinned clips are in scope. Playbook: `references/fbx-animation.md`.
 - `skills/threejs-qa-release/scripts/inspect-threejs-canvas.mjs`: packaged browser/canvas inspection helper: pixel metrics and render-budget rows; explicit `--state` captures require an awaited matching acknowledgment, and `--run-id` identifies the verification pass.
 - `skills/threejs-aaa-graphics-builder/assets/scorecard-anchors/`: calibration reference screenshots for the visual scorecard.
 - `skills/threejs-game-director/scripts/check_evidence.py`: `--manifest` validates a declared capture set and run ID without scanning historical reports. The legacy `--report` interface checks cited artifact files but cannot prove freshness or complete capture coverage. Neither replaces visual inspection or gameplay tests.

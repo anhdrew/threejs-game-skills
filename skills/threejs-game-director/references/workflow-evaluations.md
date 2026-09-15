@@ -8,6 +8,7 @@ For maintainers changing the pack, test actions and artifacts rather than instru
 | --- | --- |
 | Small arcade game, desktop and touch, no premium request | A working loop with real input and retry; all production specialists loaded for the full game, relevant references at phase entry; no forced large art pipeline or unrelated content. |
 | Premium animated encounter | Relevant generators loaded, scoped asset plan and credentials checked, concepts/models inspected before paid dependent stages, real assets integrated at gameplay scale, motion evidence and complete declared captures. |
+| Imported FBX / Mixamo / store-kit skinned body | `fbx-animation.md` loaded; clips kept and mixed (not `animations = []`); `SkeletonUtils.clone` per instance; mixer updated in seconds; unpaused motion evidence. |
 | Narrow HUD spacing fix in an existing premium game | Preserve gameplay and art; load UI and affected QA guidance; targeted layout/build checks instead of new heroes or a full release audit. |
 | Explicitly procedural premium racer | Honor procedural art without probing or submitting paid jobs just to satisfy a rule; authored forms, readable camera, measured graphics, genre-interpreted scorecard. |
 | Premium game with no provider credentials | Probe accurately without exposing secrets; continue the playable loop and honest fallback art; do not pause unrelated work, invent jobs, or claim generated assets. |

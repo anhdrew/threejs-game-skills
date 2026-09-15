@@ -144,7 +144,7 @@ type ModelFactoryResult = {
 };
 ```
 
-Imported GLB/FBX models get a loader wrapper returning the same shape plus animation clips. Generation API calls never appear in browser runtime code.
+Imported GLB/FBX models get a loader wrapper returning the same shape plus animation clips. Generation API calls never appear in browser runtime code. Skinned FBX/GLB clip playback — `FBXLoader`, `SkeletonUtils.clone`, mixer per instance, Mixamo extras, root-motion lock — is `threejs-gameplay-systems/references/fbx-animation.md` (`assets/fbx-animation/FbxActor.ts`). Do not empty `animations` to treat a character as a static mesh.
 
 Procedural texture and decal kit — canvas textures, shape geometry, or thin offset meshes for panel lines and hatches, trim sheets and edge bands, window strips and city light grids, hazard stripes and arrows and lane glyphs, scratches and wear and scorch. Set filtering, mipmaps, repeat/wrap, color space, and anisotropy deliberately; avoid unique full-size textures for tiny repeated marks.
 

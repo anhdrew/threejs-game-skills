@@ -33,7 +33,7 @@ Use the corresponding bash profiles for bash; on Windows ensure the agent proces
 | Submission outcome uncertain (connection lost or ambiguous server response) | Reconcile the accepted task ID/checkpoint or provider task history before any new paid request. If no ID can be recovered, disclose uncertainty and obtain authorization before a potentially duplicate charge. |
 | Task succeeded but output is malformed or visually unsuitable | Preserve the output and diagnose the failed stage. A missing rig GLB or failed skeleton validation is a failure, not a successful rig. Retry only that stage within the chosen attempt/budget limit. |
 
-The Tripo helper implements checkpointed tasks and safe-operation retry behavior. Use `resume`, `status`, or `download` for an existing task, not a second `text`/`image` submission. Gemini and ElevenLabs generation commands do not share Tripo's task/checkpoint API: retain existing files and reconcile uncertain requests through the actual provider instead of inventing a resume command.
+The Meshy 3D helper implements checkpointed tasks and safe-operation retry behavior. Use `resume`, `status`, or `download` for an existing task, not a second `text`/`image` submission. Gemini and ElevenLabs generation commands do not share Meshy's task/checkpoint API: retain existing files and reconcile uncertain requests through the actual provider instead of inventing a resume command.
 
 ## Progress and Fallback
 
