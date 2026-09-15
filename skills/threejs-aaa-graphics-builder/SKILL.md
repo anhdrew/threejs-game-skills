@@ -1,6 +1,6 @@
 ---
 name: threejs-aaa-graphics-builder
-description: "Upgrade Three.js games from prototype visuals to premium browser graphics: art-direction critique, procedural model building, material and texture libraries, world prop kits, shaders, VFX, lighting and render pipeline, LOD and instancing, render budgets, and a 10-category visual scorecard. Use when screenshots still look basic or the user asks for premium, AAA, high-fidelity, showcase, or less-basic graphics. Also use when anhy-game-pipeline layout needs authored procedural model factories."
+description: "Upgrade Three.js games from prototype visuals to premium browser graphics: art-direction critique, procedural model building, material and texture libraries, world prop kits, shaders, VFX, lighting and render pipeline, LOD and instancing, render budgets, and a 10-category visual scorecard. Use when screenshots still look basic or the user asks for premium, AAA, high-fidelity, showcase, or less-basic graphics. Also use as the anhy-game-pipeline lookdev mesh default (authored procedural factories) unless model_source is already blender or image-to-3d."
 ---
 
 # Three.js AAA Graphics Builder
@@ -22,7 +22,7 @@ For a broad "still looks basic" or premium pass, read all four before implementi
 
 Glow does not make primitives look AAA. Build authored forms first, then materials, then lighting, then effects — in that order.
 
-When the caller is `anhy-game-pipeline` **layout**, that skill owns *when* and the roster brief: procedural-only factories, no credential probe, layout compare vs object sheets (not the 10-category scorecard). Recipes in this pack still own *how* to author forms.
+When the caller is `anhy-game-pipeline` lookdev and `model_source` is unset or `procedural`, that skill owns *when* and the roster brief: this pack is the **default mesh path**. Procedural-only factories, no credential probe, lookdev compare vs object sheets (not the 10-category scorecard). Recipes in this pack still own *how* to author forms. Blender (`anhy-modeling`) and image-to-3D are opt-in only if they pick them or `model_source` is already set to those values.
 
 ## Workflow
 
